@@ -1,3 +1,7 @@
+<% if notice.present? %>
+  <div class="alert alert-success" id="notice"><%= notice %></div>
+<% end %>
+
 <h1>Posts</h1>
 
 <table>
@@ -22,6 +26,15 @@
   </tbody>
 </table>
 
+<ul class="list-group">
+  <% @posts.each do |post| %>
+    <li class="list-group-item">
+      <%= post.title %>
+      <span class="badge badge-primary"><%= post.user.username %></span>
+    </li>
+  <% end %>
+</ul>
+
 <br>
 
-<%= link_to 'New Post', new_post_path %>
+<%= link_to 'New Post', new_post_path, class: 'btn btn-primary' %>

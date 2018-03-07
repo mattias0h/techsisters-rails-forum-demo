@@ -1,3 +1,7 @@
+<% if notice.present? %>
+  <div class="alert alert-success" id="notice"><%= notice %></div>
+<% end %>
+
 <p>
   <strong>Poster:</strong>
   <%= @post.user.username %>
@@ -10,10 +14,9 @@
 
 <p>
   <strong>Content:</strong>
-  <div style="border-style: solid">
-    <%= simple_format(@post.content) %>
+  <div class="bg-light">
+    <%= simple_format(@post.content, class: 'p-3') %>
   </div>
-  <%= link_to 'Add comment', new_post_comment_path(@post) %>
 </p>
 
 <p>
@@ -29,9 +32,11 @@
 </p>
 
 <p>
-  <strong>Add comment</strong>
+  <%= link_to 'Add comment', new_post_comment_path(@post) %>
   <%= render 'comments/form' %>
 </p>
 
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+<div class="my-3">
+  <%= link_to 'Edit', edit_post_path(@post) %> |
+  <%= link_to 'Back', posts_path %>
+</div>

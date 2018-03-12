@@ -2,7 +2,6 @@
   <div class="alert alert-success" id="notice"><%= notice %></div>
 <% end %>
 
-<h1>Welcome</h1>
-<div>
+<%= render 'posts/table' if user_signed_in? %>
 
 </div>

@@ -3,36 +3,31 @@
 <% end %>
 
 <p>
-  <strong>Poster:</strong>
+  <strong>Title:</strong>
+  <%= @post.title %>
+  <strong>Author:</strong>
   <%= @post.user.username %>
 </p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
+<div class="bg-light mb-5">
+  <%= simple_format(@post.content, class: 'p-4') %>
+</div>
 
-<p>
-  <strong>Content:</strong>
-  <div class="bg-light">
-    <%= simple_format(@post.content, class: 'p-3') %>
-  </div>
-</p>
 
 <p>
   <strong>Comments:</strong>
   <%- @post.comments.each do |comment| %>
     <div>
-      <span><%= comment.user.username %></span> Says:
-    </div>
-    <div style="border-style: dotted">
-      <%= simple_format(comment.content) %>
+      <blockquote class="blockquote font-italic">
+        <%= simple_format(comment.content) %>
+        <footer class="blockquote-footer"><%= comment.user.username %></footer>
+      </blockquote>
     </div>
   <% end%>
 </p>
 
 <p>
-  <%= link_to 'Add comment', new_post_comment_path(@post) %>
+  Add comment:
   <%= render 'comments/form' %>
 </p>
 
